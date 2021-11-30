@@ -37,7 +37,8 @@ const WorkoutSchema = new mongoose.Schema({
             distance: {
                 type: Number,
 
-            }
+            },
+           
         },
 
     ]
