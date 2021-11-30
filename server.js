@@ -14,4 +14,6 @@ app.use(express.json())
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/workout", {useNewUrlParser:true, useUnifiedTopology: true}).catch(error => console.log(error));
 
 
-app.listen(PORT, (`The app has successfully connected and is running on port ${PORT}`))
+app.listen(PORT, () => {
+    console.log(`The app is listening on Port ${PORT}`)
+})
