@@ -4,19 +4,12 @@ const router = require('express').Router()
 //matches api/workouts
 router.get('/workouts', async (req, res) => {
     try{
-        await db.Workout.find({}).sort({exercises: -1 }), function(err, data) {
-            if(err){
-                console.log(err)
-                console.log('The query has been hit')
-            } else {
-                
-                console.log(data)
-                res.json(data)
-                
-            }
+        const data = await db.Workout.find().sort({exercises: 1 })
+        
+        res.json(data)
         }
-    } catch(e){
-        res.status(500).json({e: e.message})
+     catch(e){
+        res.status(500).json(e)
     }
 })
 
