@@ -121,12 +121,21 @@ const workoutSeed = [
         reps: 10,
         sets: 4,
       },
+
+      {
+        type: 'resistance',
+        name: 'Headlock',
+        duration: 50,
+        weight: 100,
+        reps: 200,
+        sets: 5,
+      }
     ],
   },
 ];
 
-db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
+db.WorkOut.deleteMany({})
+  .then(() => db.WorkOut.collection.insertMany(workoutSeed))
   .then((data) => {
     console.log(data.result.n + ' records inserted!');
     process.exit(0);

@@ -4,8 +4,8 @@ const router = require('express').Router()
 //matches api/workouts
 router.get('/workouts', async (req, res) => {
     try{
-        const data = await db.Workout.find().sort({exercises: 1 })
-        
+        const data = await db.WorkOut.find()
+       
         res.json(data)
         }
      catch(e){
