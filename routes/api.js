@@ -14,8 +14,9 @@ router.get('/workouts', async (req, res) => {
     }
 })
 // matches /api/workouts
-router.put('/workouts:id', async (req, res) => {
+router.put('/workouts/:id', async (req, res) => {
     try{
+        
         const id = req.params.id
         const body = req.body
         const updatedWorkOut = await db.WorkOut.findByIdAndUpdate(id, {$push: {exercises: body}},{new:true})
@@ -30,7 +31,7 @@ router.put('/workouts:id', async (req, res) => {
 //matches api/workouts
 router.post('/workouts', async (req, res) => {
     try{
-    const body = req.body
+    
        const workOut = await db.WorkOut.create({})
        res.json(workOut).status(200)
 
@@ -39,12 +40,18 @@ router.post('/workouts', async (req, res) => {
     }
 })
 
-// router.get('/api/workouts/range', async (req, res) => {
-//     try{
+router.get('/workouts/range', async (req, res) => {
+    try{
+    //         View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
 
-//     } catch(e){
-//         res.status(500).json(e)
-//     }
-// })
+    //   * View the total duration of each workout from the past seven workouts on the `stats` page.
+        const workouts = await db.WorkOut.find({}).limit(7)
+        res.json(workouts)
+
+
+    } catch(e){
+        res.status(500).json(e)
+    }
+})
 
 module.exports = router
