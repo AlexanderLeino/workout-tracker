@@ -51,7 +51,7 @@ const WorkoutSchema = new mongoose.Schema({
     }
 })
  
-WorkoutSchema.virtual("totalDuration").get(function () {
+WorkoutSchema.virtual("Duration").get(function () {
     let totalDuration = 0
     this.exercises.forEach((exercise) => {
         
