@@ -46,7 +46,17 @@ router.get('/workouts/range', async (req, res) => {
 
     //   * View the total duration of each workout from the past seven workouts on the `stats` page.
         const workouts = await db.WorkOut.find({}).limit(7)
-        res.json(workouts)
+        
+       let aggWorkout =  workouts.map(workout => {
+            let totalDuration = 0
+            workout.exercises.forEach(exercise => {
+                totalDuration += exercise.duration
+            })
+            return {...workout._doc, totalDuration}
+        })
+        
+        console.log(aggWorkout)
+        res.json(aggWorkout)
 
 
     } catch(e){

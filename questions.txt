@@ -1,0 +1,16 @@
+why would someone use {body} instead of just using req
+
+aggergates vs methods vs virtuals
+a - get data from a lot of data points
+m - customer function
+v - creates field after a query as an example
+
+Why would someone prefer to use virtual fields over just adding a method
+
+what is the differences between $add and $set
+
+Whats the difference between a getter and a setter
+
+
+
+
